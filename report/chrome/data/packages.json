@@ -1,0 +1,117 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "tmp_sber.test_main",
+    "children" : [ {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_0_RUB",
+      "uid" : "8d6e549acd62bf1",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1533291103623,
+        "stop" : 1533291109328,
+        "duration" : 5705
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_1_CNY",
+      "uid" : "409e76aadcf81486",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291109328,
+        "stop" : 1533291137634,
+        "duration" : 28306
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_2_PLN",
+      "uid" : "74cfcf8d33a7cc50",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291137634,
+        "stop" : 1533291150935,
+        "duration" : 13301
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_3_CAD",
+      "uid" : "1ac6141efc7236",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1533291150936,
+        "stop" : 1533291156260,
+        "duration" : 5324
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_4_CHF",
+      "uid" : "a3e1185065256a37",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291156260,
+        "stop" : 1533291164557,
+        "duration" : 8297
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_5_CZK",
+      "uid" : "57ef10a9027e155c",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291164558,
+        "stop" : 1533291171642,
+        "duration" : 7084
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_currencies_change_6_EUR",
+      "uid" : "a0f88e2c91292554",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291171642,
+        "stop" : 1533291179515,
+        "duration" : 7873
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_default",
+      "uid" : "b45d94864dcd1bb1",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1533291179516,
+        "stop" : 1533291181760,
+        "duration" : 2244
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "tmp_sber.test_main.MainTest.test_old_period_change",
+      "uid" : "74275f998514867c",
+      "parentUid" : "448aced039c5f97fdad501c28f2b52a4",
+      "status" : "failed",
+      "time" : {
+        "start" : 1533291181760,
+        "stop" : 1533291185656,
+        "duration" : 3896
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "tmp_sber.test_main"
+  } ]
+}

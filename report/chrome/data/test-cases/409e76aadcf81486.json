@@ -1,0 +1,51 @@
+{
+  "uid" : "409e76aadcf81486",
+  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_1_CNY",
+  "fullName" : "tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_1_CNY",
+  "historyId" : "8eab87549df8f57f6a13b90f8b998743",
+  "time" : {
+    "start" : 1533291109328,
+    "stop" : 1533291137634,
+    "duration" : 28306
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "failed",
+  "statusMessage" : "AssertionError: Conversion result did not provided.\nCase: from 1.05 CNY to PLN",
+  "statusTrace" : "Traceback (most recent call last):\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/Library/Python/2.7/site-packages/parameterized/parameterized.py\", line 392, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n  File \"/Users/k.kvasnikov/PycharmProjects/tmp_sber/test_main.py\", line 95, in test_currencies_change\n    to_=cur_to))\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py\", line 412, in fail\n    raise self.failureException(msg)\nAssertionError: Conversion result did not provided.\nCase: from 1.05 CNY to PLN",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "tmp_sber.test_main"
+  }, {
+    "name" : "testClass",
+    "value" : "tmp_sber.test_main"
+  }, {
+    "name" : "testMethod",
+    "value" : "tmp_sber.test_main.MainTest.test_currencies_change_1_CNY"
+  }, {
+    "name" : "package",
+    "value" : "tmp_sber.test_main"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "409e76aadcf81486.json",
+  "parameterValues" : [ ]
+}
