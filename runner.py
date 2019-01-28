@@ -3,7 +3,7 @@ import os, click
 
 @click.command()
 @click.option('--osb', default='macos', help='OS environment: windows, macos, unix. Default is unix')
-@click.option('--browser', default='chrome', help='Browsers: chrome, firefox. Default is chrome')
+@click.option('--browser', default='firefox', help='Browsers: chrome, firefox. Default is chrome')
 def run_test(osb, browser):
     try:
         print 'RUNNING TESTS ON {} ON {}'.format(osb, browser)
@@ -15,7 +15,7 @@ def run_test(osb, browser):
         if osb in ['windows', 'Windows']:
             os.system('rmdir .\\report\\pew')
         else:
-            os.system('rm -r ./report/pew')
+            os.system('rm -rf ./report/pew')
         print 'TESTING ACCOMPLISHED'
     except Exception as err:
         print 'TESTING WAS UNSUCCESSFUL:\n{}'.format(err)
