@@ -70,10 +70,16 @@ class MainTest(unittest.TestCase):
         dropdown_default, expected_text = LOC.dropdown_button_default(d)
         d.execute_script('return arguments[0].scrollIntoView();', dropdown_default)
         assert dropdown_default.text == expected_text, 'FAIL 1'
-        actions.move_to_element(dropdown_default).click().perform()
-        actions.move_to_element(dropdown_default).click().perform()
-        if cls.browser in ['chrome', 'Chrome']:
-            actions.move_to_element(dropdown_default).click().perform()
+        # actions.move_to_element(dropdown_default).click().perform()
+        dropdown_default.click()
+        dropdown_opened = LOC.dropdown_opened(d)
+        if dropdown_opened is False:
+            # actions.move_to_element(dropdown_default).click().perform()
+            dropdown_default.click()
+            dropdown_opened = LOC.dropdown_opened(d)
+            if dropdown_opened is False:
+                # actions.move_to_element(dropdown_default).click().perform()
+                dropdown_default.click()
 
         dropdown_opened = LOC.dropdown_opened(d)
         assert dropdown_opened is True, 'FAIL 2'

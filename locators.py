@@ -8,6 +8,11 @@ from selenium.common.exceptions import NoSuchElementException
 
 class Main():
 
+    def vis_element(self, driver, time, method, select):
+        WebDriverWait(driver, time).until(ec.visibility_of_element_located((method, select)))
+
+        return driver.find_element(method, select)
+
     def await_element(self, driver, time, method, select):
         WebDriverWait(driver, time).until(ec.presence_of_element_located((method, select)))
 
@@ -44,9 +49,9 @@ class Main():
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_select_items"]'
         try:
-            self.await_element(driver, 4, method, select)
+            self.vis_element(driver, 1, method, select)
             return True
-        except [NoSuchElementException, TimeoutException]:
+        except (NoSuchElementException, TimeoutException):
             return False
 
     def dropdown_value_default_active(self, driver):
