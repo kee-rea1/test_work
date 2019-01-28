@@ -3,7 +3,7 @@ import os, click
 
 @click.command()
 @click.option('--osb', default='macos', help='OS environment: windows, macos, unix. Default is unix')
-@click.option('--browser', default='chrome', help='Browsers: chrome, firefox. Default is chrome')
+@click.option('--browser', default='firefox', help='Browsers: chrome, firefox. Default is chrome')
 def run_test(osb, browser):
     try:
         print 'RUNNING TESTS ON {} ON {}'.format(osb, browser)

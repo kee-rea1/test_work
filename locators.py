@@ -36,6 +36,7 @@ class Main():
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_filter"]'
         element = self.await_element(driver, 4, method, select)
+        element = element.find_element_by_css_selector('span[class=select-box__title]')
 
         return element, expected_text
 

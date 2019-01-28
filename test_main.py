@@ -72,7 +72,8 @@ class MainTest(unittest.TestCase):
         assert dropdown_default.text == expected_text, 'FAIL 1'
         actions.move_to_element(dropdown_default).click().perform()
         actions.move_to_element(dropdown_default).click().perform()
-        actions.move_to_element(dropdown_default).click().perform()
+        if cls.browser in ['chrome', 'Chrome']:
+            actions.move_to_element(dropdown_default).click().perform()
 
         dropdown_opened = LOC.dropdown_opened(d)
         assert dropdown_opened is True, 'FAIL 2'
