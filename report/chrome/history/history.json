@@ -1,5 +1,5 @@
 {
-  "8b7663db76baa8cae1add9fbfe995bad" : {
+  "48f266149ff909940fb845b0eeaad671" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -9,170 +9,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "1ac6141efc7236",
+      "uid" : "defdc520db131464",
       "status" : "passed",
       "time" : {
-        "start" : 1533291150936,
-        "stop" : 1533291156260,
-        "duration" : 5324
-      }
-    } ]
-  },
-  "72d2d3ad7e64055ef03bf9d607feb25e" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8d6e549acd62bf1",
-      "status" : "passed",
-      "time" : {
-        "start" : 1533291103623,
-        "stop" : 1533291109328,
-        "duration" : 5705
-      }
-    } ]
-  },
-  "8eab87549df8f57f6a13b90f8b998743" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "409e76aadcf81486",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Conversion result did not provided.\nCase: from 1.05 CNY to PLN",
-      "time" : {
-        "start" : 1533291109328,
-        "stop" : 1533291137634,
-        "duration" : 28306
-      }
-    } ]
-  },
-  "e7f76ed849c5381f09a378f095998298" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a3e1185065256a37",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Conversion result did not provided.\nCase: from 999 999 999 999.99 CHF to CZK",
-      "time" : {
-        "start" : 1533291156260,
-        "stop" : 1533291164557,
-        "duration" : 8297
-      }
-    } ]
-  },
-  "f8c84c93afe9b2584031f68ddbe42112" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a0f88e2c91292554",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Conversion result did not provided.\nCase: from 0.01 EUR to GBP",
-      "time" : {
-        "start" : 1533291171642,
-        "stop" : 1533291179515,
-        "duration" : 7873
-      }
-    } ]
-  },
-  "14f2a13277176f9fa7c48456becb6f40" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "57ef10a9027e155c",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Conversion result did not provided.\nCase: from 0 CZK to EUR",
-      "time" : {
-        "start" : 1533291164558,
-        "stop" : 1533291171642,
-        "duration" : 7084
-      }
-    } ]
-  },
-  "b88c49cabe4abe7652eec2cc426e5946" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "74275f998514867c",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: There is an missing-data error on the date: 01.01.2002, but it must be",
-      "time" : {
-        "start" : 1533291181760,
-        "stop" : 1533291185656,
-        "duration" : 3896
-      }
-    } ]
-  },
-  "7ba4be1d5ec0730c364eeb5e67ea0eb2" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b45d94864dcd1bb1",
-      "status" : "passed",
-      "time" : {
-        "start" : 1533291179516,
-        "stop" : 1533291181760,
-        "duration" : 2244
-      }
-    } ]
-  },
-  "5d8087129ac603718bd4c4a1794f2e4d" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "74cfcf8d33a7cc50",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Conversion result did not provided.\nCase: from 1488 PLN to DKK",
-      "time" : {
-        "start" : 1533291137634,
-        "stop" : 1533291150935,
-        "duration" : 13301
+        "start" : 1548693045200,
+        "stop" : 1548693051715,
+        "duration" : 6515
       }
     } ]
   }

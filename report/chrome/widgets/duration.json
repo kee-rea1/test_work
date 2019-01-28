@@ -1,91 +1,11 @@
 [ {
-  "uid" : "a0f88e2c91292554",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_6_EUR",
+  "uid" : "defdc520db131464",
+  "name" : "test_work.test_main.MainTest.test_main",
   "time" : {
-    "start" : 1533291171642,
-    "stop" : 1533291179515,
-    "duration" : 7873
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "b45d94864dcd1bb1",
-  "name" : "tmp_sber.test_main.MainTest.test_default",
-  "time" : {
-    "start" : 1533291179516,
-    "stop" : 1533291181760,
-    "duration" : 2244
+    "start" : 1548693045200,
+    "stop" : 1548693051715,
+    "duration" : 6515
   },
   "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "74cfcf8d33a7cc50",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_2_PLN",
-  "time" : {
-    "start" : 1533291137634,
-    "stop" : 1533291150935,
-    "duration" : 13301
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "74275f998514867c",
-  "name" : "tmp_sber.test_main.MainTest.test_old_period_change",
-  "time" : {
-    "start" : 1533291181760,
-    "stop" : 1533291185656,
-    "duration" : 3896
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "1ac6141efc7236",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_3_CAD",
-  "time" : {
-    "start" : 1533291150936,
-    "stop" : 1533291156260,
-    "duration" : 5324
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8d6e549acd62bf1",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_0_RUB",
-  "time" : {
-    "start" : 1533291103623,
-    "stop" : 1533291109328,
-    "duration" : 5705
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "57ef10a9027e155c",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_5_CZK",
-  "time" : {
-    "start" : 1533291164558,
-    "stop" : 1533291171642,
-    "duration" : 7084
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "a3e1185065256a37",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_4_CHF",
-  "time" : {
-    "start" : 1533291156260,
-    "stop" : 1533291164557,
-    "duration" : 8297
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "409e76aadcf81486",
-  "name" : "tmp_sber.test_main.MainTest.test_currencies_change_1_CNY",
-  "time" : {
-    "start" : 1533291109328,
-    "stop" : 1533291137634,
-    "duration" : 28306
-  },
-  "status" : "failed",
   "severity" : "normal"
 } ]

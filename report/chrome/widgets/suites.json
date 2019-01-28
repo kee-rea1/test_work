@@ -1,15 +1,15 @@
 {
   "total" : 1,
   "items" : [ {
-    "uid" : "7c79f14af509e07cfbb96763d383e243",
-    "name" : "tmp_sber.test_main",
+    "uid" : "9638d62b36237b2351620270706688c0",
+    "name" : "test_work.test_main",
     "statistic" : {
-      "failed" : 6,
+      "failed" : 0,
       "broken" : 0,
       "skipped" : 0,
-      "passed" : 3,
+      "passed" : 1,
       "unknown" : 0,
-      "total" : 9
+      "total" : 1
     }
   } ]
 }

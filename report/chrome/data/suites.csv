@@ -1,14 +1,2 @@
-"Status","Name","Duration in ms","Description"
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_6_EUR","7873",""
-"passed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_default","2244",""
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_2_PLN","13301",""
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_old_period_change","3896","
-        dalee send_keys(Keys.BACKSPACE) - kostili 4tobi skinut daty na samuyu rannuu,
-        ibo polya dlya vvoda dat o4en krivie i bez podderjki ru4nogo vvoda, send_keys v nih ne rabotaet,
-        a slojniu obvyazky dlya etogo datepicker'a pisat mne prosto len
-        "
-"passed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_3_CAD","5324",""
-"passed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_0_RUB","5705",""
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_5_CZK","7084",""
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_4_CHF","8297",""
-"failed","tmp_sber.test_main.tmp_sber.test_main.MainTest.test_currencies_change_1_CNY","28306",""
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jan 28 19:30:45 MSK 2019","Mon Jan 28 19:30:51 MSK 2019","6515","","test_work.test_main","","test_work.test_main","test_work.test_main.MainTest.test_main","test_work.test_main.MainTest.test_main",""

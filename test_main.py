@@ -95,14 +95,22 @@ class MainTest(unittest.TestCase):
         dropdown_value_tomorrow.click()
         dropdown_button_tomorrow, expected_text = LOC.dropdown_button_tomorrow(d)
         assert dropdown_button_tomorrow.text == expected_text, 'FAIL 7'
-        sleep(5)
-        d.switch_to.default_content()
-        res_grid = LOC.res_grid(d)
-        d.execute_script('return arguments[0].scrollIntoView();', res_grid)
-        result, expected_lenght = LOC.results(d)
+        # d.switch_to.default_content()
+        sleep(3)
+        body = d.find_element_by_id('app-root')
+        body.click()
+        body.click()
+        body.click()
+
+        # res_grid = LOC.res_grid(d)
+        # res_grid = LOC.results(d)
+        resss = d.find_element_by_class_name('the-doctor-list-items')
+        d.execute_script('return arguments[0].scrollIntoView();', resss)
+        # result, expected_lenght = LOC.results(d)
+        result = d.find_elements_by_css_selector('div[data-test-id="doctor_list_item.0"]')
         print len(result)
         for res in result:
-            print res.text
+            print res.text.encode('utf-8')
 
 
         # assert dropdown_all_days.text == expected_text, 'FAIL 2: {}'.format(dropdown_all_days.text.encode('utf-8'))
