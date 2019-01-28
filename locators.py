@@ -91,11 +91,15 @@ class Main():
         return element
 
     def results(self, driver):
-        expected_lenght = u'Расписание на завтра'
+
         method = By.CSS_SELECTOR
-        # select = 'div[class="the-doctor-list-items"]'
-        select = 'div[data-test-id="doctor_list_item]"'
-        elements = self.await_elements(driver, 4, method, select)
+        expected_lenght = 10
+
+        elements = []
+        for i in range(0, 10):
+            select = 'div[data-test-id="doctor_list_item.{}"]'.format(i)
+            element = self.await_element(driver, 4, method, select)
+            elements.append(element)
 
         return elements, expected_lenght
 
