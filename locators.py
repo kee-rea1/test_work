@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 class Main():
 
-    def vis_element(self, driver, time, method, select):
+    def await_vis_element(self, driver, time, method, select):
         WebDriverWait(driver, time).until(ec.visibility_of_element_located((method, select)))
 
         return driver.find_element(method, select)
@@ -49,7 +49,7 @@ class Main():
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_select_items"]'
         try:
-            self.vis_element(driver, 1, method, select)
+            self.await_vis_element(driver, 1, method, select)
             return True
         except (NoSuchElementException, TimeoutException):
             return False
@@ -84,6 +84,7 @@ class Main():
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_filter"]'
         element = self.await_element(driver, 4, method, select)
+        element = element.find_element_by_css_selector('span[class=select-box__title]')
 
         return element, expected_text
 

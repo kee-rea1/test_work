@@ -61,7 +61,7 @@ class MainTest(unittest.TestCase):
             else:
                 cls.driver = webdriver.Chrome(chrome_options=chrome_options, executable_path='./chromedriver_unix64')
 
-        cls.driver.implicitly_wait(2)
+        cls.driver.implicitly_wait(4)
 
     def test_main(cls):
         d = cls.driver
