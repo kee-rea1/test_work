@@ -9,6 +9,8 @@ from selenium import webdriver
 from parameterized import parameterized
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 # Decrease logging level in trace_back
@@ -63,11 +65,48 @@ class MainTest(unittest.TestCase):
 
     def test_main(cls):
         d = cls.driver
+        actions = ActionChains(d)
         d.get(doc_url)
-        dropdown = LOC.dropdown(d)
-        print dropdown.text
-        dropdown.click()
+        dropdown_default, expected_text = LOC.dropdown_button_default(d)
+        d.execute_script('return arguments[0].scrollIntoView();', dropdown_default)
+        assert dropdown_default.text == expected_text, 'FAIL 1'
+        actions.move_to_element(dropdown_default).click().perform()
+        actions.move_to_element(dropdown_default).click().perform()
+        actions.move_to_element(dropdown_default).click().perform()
+
+        dropdown_opened = LOC.dropdown_opened(d)
+        assert dropdown_opened is True, 'FAIL 2'
+
+        dropdown_all_days, expected_text = LOC.dropdown_value_default_active(d)
+
+        assert len(dropdown_all_days) == 1, 'FAIL 3'
+        assert dropdown_all_days[0].text == expected_text, 'FAIL 4'
+        default_mark = LOC.dropdown_value_marker_displayed(dropdown_all_days[0])
+        assert default_mark is True, 'FAIL 5'
+        dropdown_value_tomorrow, expected_text = LOC.dropdown_value_tomorrow(d)
+        try:
+            tomorrow_text = dropdown_value_tomorrow.text.split(', ')[0]
+            assert tomorrow_text == expected_text, 'FAIL 6: {}'.format(tomorrow_text.encode('utf-8'))
+        except Exception as err:
+            cls.fail('FAIL 6: Incorrect text provided, {}'.format(err))
         sleep(3)
+
+        # actions.move_to_element(dropdown_value_tomorrow).click().perform()
+        dropdown_value_tomorrow.click()
+        dropdown_button_tomorrow, expected_text = LOC.dropdown_button_tomorrow(d)
+        assert dropdown_button_tomorrow.text == expected_text, 'FAIL 7'
+        sleep(5)
+        d.switch_to.default_content()
+        res_grid = LOC.res_grid(d)
+        d.execute_script('return arguments[0].scrollIntoView();', res_grid)
+        result, expected_lenght = LOC.results(d)
+        print len(result)
+        for res in result:
+            print res.text
+
+
+        # assert dropdown_all_days.text == expected_text, 'FAIL 2: {}'.format(dropdown_all_days.text.encode('utf-8'))
+        # sleep(3)
 
     # @parameterized.expand(cases_list)
     # def test_currencies_change(cls, cur_from, cur_to, cur_value, cur_expected_result):
