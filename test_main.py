@@ -41,7 +41,7 @@ class MainTest(unittest.TestCase):
     def setUpClass(cls):
         cls.osb = config.get('osb')
         cls.browser = config.get('browser')
-        if cls.browser == 'firefox':
+        if cls.browser in ['firefox', 'Firefox', 'mozilla', 'Mozilla']:
             moz_options = webdriver.FirefoxOptions()
             moz_options.add_argument("--no-sandbox")
             if cls.osb in ['macos', 'MacOS']:
@@ -64,154 +64,85 @@ class MainTest(unittest.TestCase):
 
     def test_main(cls):
         d = cls.driver
-        actions = ActionChains(d)
         d.get(doc_url)
+
+        # Check default filter value
         dropdown_default, expected_text = LOC.dropdown_button_default(d)
         d.execute_script('return arguments[0].scrollIntoView();', dropdown_default)
         assert dropdown_default.text == expected_text, \
-            u'Некорректный текст заголовка в фильтре дропдауна по дефолту.\n' \
-            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_default.text.encode('utf-8'), exp=expected_text)
+            'Некорректный текст заголовка в фильтре дропдауна по дефолту.\n' \
+            'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_default.text.encode('utf-8'), exp=expected_text)
 
-        # actions.move_to_element(dropdown_default).click().perform()
+        # Trying to open filter popup. Not stable. Kostily added
         dropdown_default.click()
         dropdown_opened = LOC.dropdown_opened(d)
         if dropdown_opened is False:
-            # actions.move_to_element(dropdown_default).click().perform()
             dropdown_default.click()
             dropdown_opened = LOC.dropdown_opened(d)
             if dropdown_opened is False:
-                # actions.move_to_element(dropdown_default).click().perform()
                 dropdown_default.click()
-
+        # Asserting popup filter was opened
         dropdown_opened = LOC.dropdown_opened(d)
         assert dropdown_opened is True, \
-            u'Дропдаун выбора фильтров не раскрылся'
+            'Дропдаун выбора фильтров не раскрылся'
 
-        dropdown_all_days, expected_text = LOC.dropdown_value_default_active(d)
+        # Checking amount of default active filters
+        dropdown_filters_active, expected_text = LOC.dropdown_value_default_active(d)
+        assert len(dropdown_filters_active) == 1, \
+            'Некорректное число активных фильтров в дропдауне по дефолту.\n' \
+            'Получено: {got}\nОжидаемо: 1'.format(got=len(dropdown_filters_active))
 
-        assert len(dropdown_all_days) == 1, \
-            u'Некорректное число активных фильтров в дропдауне по дефолту.\n' \
-            u'Получено: {got}\nОжидаемо: 1'.format(got=len(dropdown_all_days))
-        assert dropdown_all_days[0].text == expected_text, \
-            u'Некорректный текст фильтра в дропдауне.\n' \
-            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_all_days[0].text.encode('utf-8'), exp=expected_text)
+        # Checking value of a default active filter
+        assert dropdown_filters_active[0].text == expected_text, \
+            'Некорректный текст фильтра в дропдауне.\n' \
+            'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_filters_active[0].text.encode('utf-8'), exp=expected_text)
 
-        default_mark = LOC.dropdown_value_marker_displayed(dropdown_all_days[0])
+        # Checking default active filter has a selecting mark
+        default_mark = LOC.dropdown_value_marker_displayed(dropdown_filters_active[0])
         assert default_mark is True, \
-            u'Маркер выбранного фильтра не найден для дефолтного фильтра.\n'
+            'Маркер выбранного фильтра не найден для дефолтного фильтра.\n'
         dropdown_value_tomorrow, expected_text = LOC.dropdown_value_tomorrow(d)
+
+        # Checking Tomorrow text value in a dropdown.
         try:
             tomorrow_text = dropdown_value_tomorrow.text.split(', ')[0]
             assert tomorrow_text == expected_text,  \
-                u'Некорректный текст фильтра в дропдауне.\n' \
-                u'Получено: {got}\nОжидаемо: {exp}'.format(got=tomorrow_text.encode('utf-8'), exp=expected_text)
+                'Некорректный текст фильтра в дропдауне.\n' \
+                'Получено: {got}\nОжидаемо: {exp}'.format(got=tomorrow_text.encode('utf-8'), exp=expected_text)
         except Exception as err:
-            cls.fail(u'Ошибка при получении значения фильтра "Завтра", {}'.format(err))
+            cls.fail('Ошибка при получении значения фильтра "Завтра", {}'.format(err))
 
-        # actions.move_to_element(dropdown_value_tomorrow).click().perform()
+        # Checking Tomorrow text applied to a filter header value
         dropdown_value_tomorrow.click()
         dropdown_button_tomorrow, expected_text = LOC.dropdown_button_tomorrow(d)
         assert dropdown_button_tomorrow.text == expected_text,  \
-            u'Некорректный текст заголовка в фильтре после выбора "Завтра".\n' \
-            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_button_tomorrow.text.encode('utf-8'), exp=expected_text)
+            'Некорректный текст заголовка в фильтре после выбора "Завтра".\n' \
+            'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_button_tomorrow.text.encode('utf-8'), exp=expected_text)
         sleep(3)
 
+        # Checking elements on page after a page reload
+        # Focus on the page results element
         resss = d.find_element_by_class_name('the-doctor-list-items')
         d.execute_script('return arguments[0].scrollIntoView();', resss)
 
+        # Checking a Tomorrow value has a selected mark. The same kostyls here.
         dropdown_button_tomorrow.click()
         dropdown_opened = LOC.dropdown_opened(d)
         if dropdown_opened is False:
-            # actions.move_to_element(dropdown_default).click().perform()
             dropdown_button_tomorrow.click()
             dropdown_opened = LOC.dropdown_opened(d)
             if dropdown_opened is False:
-                # actions.move_to_element(dropdown_default).click().perform()
                 dropdown_button_tomorrow.click()
-        dropdown_all_days, expected_text = LOC.dropdown_value_default_active(d)
-        print dropdown_all_days[0].text.encode('utf-8')
-        default_mark = LOC.dropdown_value_marker_displayed(dropdown_all_days[0])
-        assert default_mark is False, \
-            u'Маркер выбранного фильтра остался на дефолтном значении после смены фильтра.\n'
         dropdown_value_tomorrow, expected_text = LOC.dropdown_value_tomorrow(d)
         tomorrow_mark = LOC.dropdown_value_marker_displayed(dropdown_value_tomorrow)
         assert tomorrow_mark is True, \
-            u'Маркер выбранного фильтра не найден после смены фильтра.\n'
+            'Маркер выбранного фильтра не найден после смены фильтра.\n'
+
+        # Checking a grid with results has a correct default length
         results, expected_lenght = LOC.results(d)
         assert len(results) == expected_lenght,  \
-            u'Некорректное число результатов выдачи после смены фильтра.\n' \
-            u'Получено: {got}\nОжидаемо: 10'.format(got=len(dropdown_all_days))
-        # for res in results:
-        #     print res.text.encode('utf-8')
-
-
-        # assert dropdown_all_days.text == expected_text, 'FAIL 2: {}'.format(dropdown_all_days.text.encode('utf-8'))
-        # sleep(3)
-
-    # @parameterized.expand(cases_list)
-    # def test_currencies_change(cls, cur_from, cur_to, cur_value, cur_expected_result):
-    #     d = cls.driver
-    #     d.get(host)
-    #     # switch the currencies types
-    #     currency_from = LOC.currency_from(d)
-    #     currency_from.click()
-    #     dropdown_currency_from = LOC.currency_dropdown(d, cur_from)
-    #     dropdown_currency_from.click()
-    #     currency_to = LOC.currency_to(d)
-    #     currency_to.click()
-    #     dropdown_currency_to = LOC.currency_dropdown(d, cur_to)
-    #     dropdown_currency_to.click()
-    #     # send the currencies values
-    #     currency_value_input = LOC.input_sum(d)
-    #     currency_value_input.click()
-    #     currency_value_input.clear()
-    #     currency_value_input.send_keys(cur_value)
-    #     # check the answer result
-    #     get_result = LOC.result_button(d)
-    #     get_result.click()
-    #     sleep(2)
-    #     if bool(cur_expected_result) == True:
-    #         try:
-    #             result_total = LOC.result_answer(d)
-    #             assert result_total.is_displayed(), \
-    #                 'Conversion result did not provided.\nCase: from {value} {from_} to {to_}'.format(value=cur_value,
-    #                                                                                                   from_=cur_from,
-    #                                                                                                   to_=cur_to)
-    #         except TimeoutException:
-    #             cls.fail(
-    #                 'Conversion result did not provided.\nCase: from {value} {from_} to {to_}'.format(value=cur_value,
-    #                                                                                                   from_=cur_from,
-    #                                                                                                   to_=cur_to))
-    #
-    # def test_old_period_change(cls):
-    #     '''
-    #     dalee send_keys(Keys.BACKSPACE) - kostili 4tobi skinut daty na samuyu rannuu,
-    #     ibo polya dlya vvoda dat o4en krivie i bez podderjki ru4nogo vvoda, send_keys v nih ne rabotaet,
-    #     a slojniu obvyazky dlya etogo datepicker'a pisat mne prosto len
-    #     '''
-    #     d = cls.driver
-    #     d.get(host)
-    #     earliest_txt = LOC.earliest_period(d).text
-    #     earliest_date = re.findall(r"(\d.+)", earliest_txt)[0]
-    #     date_start = LOC.date_start(d)
-    #     date_start.click()
-    #     date_start.send_keys(Keys.BACKSPACE)
-    #     date_end = LOC.date_end(d)
-    #     date_end.click()
-    #     date_end.send_keys(Keys.BACKSPACE)
-    #     period_button = LOC.period_button(d)
-    #     period_button.click()
-    #     sleep(2)
-    #     try:
-    #         no_data = LOC.no_data(d)
-    #         assert no_data.is_displayed() == False, 'There is an missing-data error on the date: ' \
-    #                                                 '{calenda}, but it must be'.format(calenda=earliest_date)
-    #
-    #         graph = LOC.graph(d)
-    #         assert graph.is_displayed() == True, 'It seems no graphics on the date: {calenda}, but it must be'.format(
-    #             calenda=earliest_date)
-    #     except TimeoutException:
-    #         cls.fail('It seems no graphics on the date: {calenda}, but it must be'.format(calenda=earliest_date))
+            'Некорректное число результатов выдачи после смены фильтра.\n' \
+            'Получено: {got}\nОжидаемо: 10'.format(got=len(dropdown_filters_active))
 
     @classmethod
     def tearDownClass(cls):
