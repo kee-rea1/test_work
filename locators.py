@@ -24,19 +24,6 @@ class Main():
 
         return driver.find_elements(method, select)
 
-    def work_with_frame(self, d, element):
-        pew = element.find_element_by_tag_name("iframe")
-        d.switch_to.frame(pew)
-        # try:
-        #     pew = d.find_element_by_class_name("html-banner-place")
-        # except NoSuchElementException:
-        #     pew = d.find_element_by_class_name("html5-banner-place")
-        # pew = pew.find_element_by_tag_name("iframe")
-        # d.switch_to.frame(pew)
-        # pew = d.find_element_by_class_name('TestBanner_outerBlock')
-
-        return pew
-
     def dropdown_button_default(self, driver):
         expected_text = u'Расписание на все дни'
         method = By.CSS_SELECTOR
@@ -58,7 +45,6 @@ class Main():
     def dropdown_value_default_active(self, driver):
         expected_text = u'Все дни'
         method = By.CSS_SELECTOR
-        # select = 'span[class="select-box__options-item-title]"]'
         select = 'button.select-box__options-item.--active'
         elements = self.await_elements(driver, 4, method, select)
 
@@ -92,14 +78,12 @@ class Main():
 
     def res_grid(self, driver):
         method = By.ID
-        # select = 'div[class="the-doctor-list-items"]'
         select = 'doctor_list'
         element = self.await_element(driver, 4, method, select)
 
         return element
 
     def results(self, driver):
-
         method = By.CSS_SELECTOR
         expected_lenght = 10
 
@@ -110,119 +94,3 @@ class Main():
             elements.append(element)
 
         return elements, expected_lenght
-
-
-    # def input_sum(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "*[class$='right input']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0].find_element_by_xpath('//input[@placeholder="Сумма"]')
-    #
-    #     return element
-    #
-    # def currency_from(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "header[data-popup-initialized]"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def currency_to(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "header[data-popup-initialized]"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[1]
-    #
-    #     return element
-    #
-    # def result_button(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "button.rates-button"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #     driver.execute_script('return arguments[0].scrollIntoView();', element)
-    #
-    #     return element
-    #
-    # def result_answer(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "div[class='rates-converter-result__total']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def currency_dropdown(self, driver, currency):
-    #     method = By.CSS_SELECTOR
-    #     select = "div[class='visible']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0].find_element_by_xpath(".//*[text()[contains(.,'{cur}')]]".format(cur=currency))
-    #     driver.execute_script('return arguments[0].scrollIntoView();', element)
-    #
-    #     return element
-    #
-    # def earliest_period(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "div[class='rates-details__notes print-invisible']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def date_start(self, driver):
-    #     method = By.XPATH
-    #     select = "//*[@data-property='fromDate']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def date_end(self, driver):
-    #     method = By.XPATH
-    #     select = "//*[@data-property='toDate']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def period_button(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "*[class$='filter-button']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #
-    #     return element
-    #
-    # def graph(self, driver):
-    #     method = By.CSS_SELECTOR
-    #     select = "*[class$='jqplot-event-canvas']"
-    #
-    #     elements = self.await_element(driver, method, select)
-    #     element = elements[0]
-    #     driver.execute_script('return arguments[0].scrollIntoView();', element)
-    #
-    #     return element
-    #
-    # def no_data(self, driver):
-    #     method = By.XPATH
-    #     select = ".//*[text()='{pew}']/..".format(pew=Main.miss_data_exp_text.encode('utf-8'))
-    #
-    #     try:
-    #         element = driver.find_element(method, select)
-    #         driver.execute_script('return arguments[0].scrollIntoView();', element)
-    #
-    #         return element
-    #     except Exception:
-    #
-    #         return True

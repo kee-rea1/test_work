@@ -1,18 +1,9 @@
 # -*- coding: utf-8 -*-
-import re
-import csv
 import unittest
 import locators as lc
 from time import sleep
 from testconfig import config
 from selenium import webdriver
-from parameterized import parameterized
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.action_chains import ActionChains
-
-
 # Decrease logging level in trace_back
 import logging
 from selenium.webdriver.remote.remote_connection import LOGGER
@@ -21,17 +12,6 @@ LOC = lc.Main()
 
 main_url = 'https://docdoc.ru'
 doc_url = main_url + '/doctor'
-
-
-# cases_list = []
-# with open('./params.csv', 'rb') as cases:
-#     reader = csv.reader(cases)
-#     for row in reader:
-#         if len(row) == 4:
-#             cases_list.append(row)
-#         else:
-#             raise Exception('Wrong format for "params.csv". '
-#                             'Must be 4th values per row for scheme: FROM, TO, VALUE, RESULT')
 
 
 class MainTest(unittest.TestCase):
