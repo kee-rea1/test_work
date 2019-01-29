@@ -38,7 +38,7 @@ class Main():
         return pew
 
     def dropdown_button_default(self, driver):
-        expected_text = u'Расписание на все дни'
+        expected_text = 'Расписание на все дни'
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_filter"]'
         element = self.await_element(driver, 4, method, select)
@@ -56,7 +56,7 @@ class Main():
             return False
 
     def dropdown_value_default_active(self, driver):
-        expected_text = u'Все дни'
+        expected_text = 'Все дни'
         method = By.CSS_SELECTOR
         # select = 'span[class="select-box__options-item-title]"]'
         select = 'button.select-box__options-item.--active'
@@ -73,7 +73,7 @@ class Main():
             return False
 
     def dropdown_value_tomorrow(self, driver):
-        expected_text = u'Завтра'
+        expected_text = 'Завтра'
         method = By.CSS_SELECTOR
         select = 'button[data-test-id="null.1"]'
         element = self.await_element(driver, 4, method, select)
@@ -81,7 +81,7 @@ class Main():
         return element, expected_text
 
     def dropdown_button_tomorrow(self, driver):
-        expected_text = u'Расписание на завтра'
+        expected_text = 'Расписание на завтра'
         method = By.CSS_SELECTOR
         select = 'div[data-test-id="date_filter"]'
         element = self.await_element(driver, 4, method, select)

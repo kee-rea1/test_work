@@ -137,6 +137,9 @@ class MainTest(unittest.TestCase):
         tomorrow_mark = LOC.dropdown_value_marker_displayed(dropdown_value_tomorrow)
         assert tomorrow_mark is True, \
             'Маркер выбранного фильтра не найден после смены фильтра.\n'
+        # Focus on the page results element
+        resss = d.find_element_by_class_name('the-doctor-list-items')
+        d.execute_script('return arguments[0].scrollIntoView();', resss)
 
         # Checking a grid with results has a correct default length
         results, expected_lenght = LOC.results(d)
