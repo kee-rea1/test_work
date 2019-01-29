@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
 
 
 class Main():
@@ -51,7 +52,7 @@ class Main():
         try:
             self.await_vis_element(driver, 1, method, select)
             return True
-        except (NoSuchElementException, TimeoutException):
+        except (NoSuchElementException, TimeoutException, StaleElementReferenceException):
             return False
 
     def dropdown_value_default_active(self, driver):
@@ -68,7 +69,7 @@ class Main():
         try:
             element.find_element_by_css_selector(select)
             return True
-        except [NoSuchElementException, TimeoutException]:
+        except [NoSuchElementException, TimeoutException, StaleElementReferenceException]:
             return False
 
     def dropdown_value_tomorrow(self, driver):

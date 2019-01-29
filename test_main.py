@@ -41,7 +41,6 @@ class MainTest(unittest.TestCase):
     def setUpClass(cls):
         cls.osb = config.get('osb')
         cls.browser = config.get('browser')
-        print cls.osb, cls.browser
         if cls.browser == 'firefox':
             moz_options = webdriver.FirefoxOptions()
             moz_options.add_argument("--no-sandbox")
@@ -69,7 +68,10 @@ class MainTest(unittest.TestCase):
         d.get(doc_url)
         dropdown_default, expected_text = LOC.dropdown_button_default(d)
         d.execute_script('return arguments[0].scrollIntoView();', dropdown_default)
-        assert dropdown_default.text == expected_text, 'FAIL 1'
+        assert dropdown_default.text == expected_text, \
+            u'Некорректный текст заголовка в фильтре дропдауна по дефолту.\n' \
+            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_default.text.encode('utf-8'), exp=expected_text)
+
         # actions.move_to_element(dropdown_default).click().perform()
         dropdown_default.click()
         dropdown_opened = LOC.dropdown_opened(d)
@@ -82,32 +84,63 @@ class MainTest(unittest.TestCase):
                 dropdown_default.click()
 
         dropdown_opened = LOC.dropdown_opened(d)
-        assert dropdown_opened is True, 'FAIL 2'
+        assert dropdown_opened is True, \
+            u'Дропдаун выбора фильтров не раскрылся'
 
         dropdown_all_days, expected_text = LOC.dropdown_value_default_active(d)
 
-        assert len(dropdown_all_days) == 1, 'FAIL 3'
-        assert dropdown_all_days[0].text == expected_text, 'FAIL 4'
+        assert len(dropdown_all_days) == 1, \
+            u'Некорректное число активных фильтров в дропдауне по дефолту.\n' \
+            u'Получено: {got}\nОжидаемо: 1'.format(got=len(dropdown_all_days))
+        assert dropdown_all_days[0].text == expected_text, \
+            u'Некорректный текст фильтра в дропдауне.\n' \
+            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_all_days[0].text.encode('utf-8'), exp=expected_text)
+
         default_mark = LOC.dropdown_value_marker_displayed(dropdown_all_days[0])
-        assert default_mark is True, 'FAIL 5'
+        assert default_mark is True, \
+            u'Маркер выбранного фильтра не найден для дефолтного фильтра.\n'
         dropdown_value_tomorrow, expected_text = LOC.dropdown_value_tomorrow(d)
         try:
             tomorrow_text = dropdown_value_tomorrow.text.split(', ')[0]
-            assert tomorrow_text == expected_text, 'FAIL 6: {}'.format(tomorrow_text.encode('utf-8'))
+            assert tomorrow_text == expected_text,  \
+                u'Некорректный текст фильтра в дропдауне.\n' \
+                u'Получено: {got}\nОжидаемо: {exp}'.format(got=tomorrow_text.encode('utf-8'), exp=expected_text)
         except Exception as err:
-            cls.fail('FAIL 6: Incorrect text provided, {}'.format(err))
-        sleep(3)
+            cls.fail(u'Ошибка при получении значения фильтра "Завтра", {}'.format(err))
 
         # actions.move_to_element(dropdown_value_tomorrow).click().perform()
         dropdown_value_tomorrow.click()
         dropdown_button_tomorrow, expected_text = LOC.dropdown_button_tomorrow(d)
-        assert dropdown_button_tomorrow.text == expected_text, 'FAIL 7'
+        assert dropdown_button_tomorrow.text == expected_text,  \
+            u'Некорректный текст заголовка в фильтре после выбора "Завтра".\n' \
+            u'Получено: {got}\nОжидаемо: {exp}'.format(got=dropdown_button_tomorrow.text.encode('utf-8'), exp=expected_text)
         sleep(3)
 
         resss = d.find_element_by_class_name('the-doctor-list-items')
         d.execute_script('return arguments[0].scrollIntoView();', resss)
+
+        dropdown_button_tomorrow.click()
+        dropdown_opened = LOC.dropdown_opened(d)
+        if dropdown_opened is False:
+            # actions.move_to_element(dropdown_default).click().perform()
+            dropdown_button_tomorrow.click()
+            dropdown_opened = LOC.dropdown_opened(d)
+            if dropdown_opened is False:
+                # actions.move_to_element(dropdown_default).click().perform()
+                dropdown_button_tomorrow.click()
+        dropdown_all_days, expected_text = LOC.dropdown_value_default_active(d)
+        print dropdown_all_days[0].text.encode('utf-8')
+        default_mark = LOC.dropdown_value_marker_displayed(dropdown_all_days[0])
+        assert default_mark is False, \
+            u'Маркер выбранного фильтра остался на дефолтном значении после смены фильтра.\n'
+        dropdown_value_tomorrow, expected_text = LOC.dropdown_value_tomorrow(d)
+        tomorrow_mark = LOC.dropdown_value_marker_displayed(dropdown_value_tomorrow)
+        assert tomorrow_mark is True, \
+            u'Маркер выбранного фильтра не найден после смены фильтра.\n'
         results, expected_lenght = LOC.results(d)
-        assert len(results) == expected_lenght, 'FAIL 8'
+        assert len(results) == expected_lenght,  \
+            u'Некорректное число результатов выдачи после смены фильтра.\n' \
+            u'Получено: {got}\nОжидаемо: 10'.format(got=len(dropdown_all_days))
         # for res in results:
         #     print res.text.encode('utf-8')
 
